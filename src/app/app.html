@@ -34,17 +34,13 @@
                 <a routerLink="/products" [queryParams]="{category: 'mens-watches'}" (click)="closeDropdown()">Mens & Womens Watches</a>
                 <a routerLink="/products" [queryParams]="{category: 'mens-shoes'}" (click)="closeDropdown()">Mens & Womens Shoes</a>
                 <hr>
-                <a routerLink="/products" [queryParams]="{category: 'womens-dresses'}" (click)="closeDropdown()">Womens Dresses</a>
-                <a routerLink="/products" [queryParams]="{category: 'tops'}" (click)="closeDropdown()">Tops</a>
               </div>
             </div>
 
             <div class="custom-dropdown" (mouseleave)="closeDropdown()">
               <a class="cat-link" (click)="toggleDropdown('electronics')">Electronics <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a>
               <div class="custom-dropdown-menu" [class.show]="activeDropdown === 'electronics'">
-                <a routerLink="/products" [queryParams]="{category: 'smartphones'}" (click)="closeDropdown()">Smartphones</a>
                 <a routerLink="/products" [queryParams]="{category: 'laptops'}" (click)="closeDropdown()">Laptops</a>
-                <a routerLink="/products" [queryParams]="{category: 'tablets'}" (click)="closeDropdown()">Tablets</a>
                 <a routerLink="/products" [queryParams]="{category: 'mobile-accessories'}" (click)="closeDropdown()">Mobile Accessories</a>
               </div>
             </div>
@@ -54,7 +50,6 @@
               <div class="custom-dropdown-menu" [class.show]="activeDropdown === 'accessories'">
                 <a routerLink="/products" [queryParams]="{category: 'fragrances'}" (click)="closeDropdown()">Fragrances</a>
                 <a routerLink="/products" [queryParams]="{category: 'beauty'}" (click)="closeDropdown()">Beauty</a>
-                <a routerLink="/products" [queryParams]="{category: 'skin-care'}" (click)="closeDropdown()">Skin Care</a>
               </div>
             </div>
 
@@ -65,7 +60,6 @@
                 <a routerLink="/products" [queryParams]="{category: 'home-decoration'}" (click)="closeDropdown()">Home Decoration</a>
                 <a routerLink="/products" [queryParams]="{category: 'furniture'}" (click)="closeDropdown()">Furniture</a>
                 <a routerLink="/products" [queryParams]="{category: 'kitchen-accessories'}" (click)="closeDropdown()">Kitchen Accessories</a>
-                <a routerLink="/products" [queryParams]="{category: 'sports-accessories'}" (click)="closeDropdown()">Sports</a>
               </div>
             </div>
 
@@ -168,21 +162,16 @@
           <a routerLink="/products" [queryParams]="{category: 'mens-shirts'}" (click)="closeDropdown()">Mens Shirts</a>
           <a routerLink="/products" [queryParams]="{category: 'mens-watches'}" (click)="closeDropdown()">Mens & Womens Watches</a>
           <a routerLink="/products" [queryParams]="{category: 'mens-shoes'}" (click)="closeDropdown()">Mens & Womens Shoes</a>
-          <a routerLink="/products" [queryParams]="{category: 'womens-dresses'}" (click)="closeDropdown()">Womens Dresses</a>
-          <a routerLink="/products" [queryParams]="{category: 'tops'}" (click)="closeDropdown()">Tops</a>
         </div>
 
         <div class="mobile-dropdown-panel" *ngIf="activeDropdown === 'm-electronics'">
-          <a routerLink="/products" [queryParams]="{category: 'smartphones'}" (click)="closeDropdown()">Smartphones</a>
           <a routerLink="/products" [queryParams]="{category: 'laptops'}" (click)="closeDropdown()">Laptops</a>
-          <a routerLink="/products" [queryParams]="{category: 'tablets'}" (click)="closeDropdown()">Tablets</a>
           <a routerLink="/products" [queryParams]="{category: 'mobile-accessories'}" (click)="closeDropdown()">Mobile Accessories</a>
         </div>
 
         <div class="mobile-dropdown-panel" *ngIf="activeDropdown === 'm-cosmetics'">
           <a routerLink="/products" [queryParams]="{category: 'fragrances'}" (click)="closeDropdown()">Fragrances</a>
           <a routerLink="/products" [queryParams]="{category: 'beauty'}" (click)="closeDropdown()">Beauty</a>
-          <a routerLink="/products" [queryParams]="{category: 'skin-care'}" (click)="closeDropdown()">Skin Care</a>
         </div>
 
         <div class="mobile-dropdown-panel" *ngIf="activeDropdown === 'm-more'">
@@ -190,7 +179,6 @@
           <a routerLink="/products" [queryParams]="{category: 'home-decoration'}" (click)="closeDropdown()">Home Decoration</a>
           <a routerLink="/products" [queryParams]="{category: 'furniture'}" (click)="closeDropdown()">Furniture</a>
           <a routerLink="/products" [queryParams]="{category: 'kitchen-accessories'}" (click)="closeDropdown()">Kitchen Accessories</a>
-          <a routerLink="/products" [queryParams]="{category: 'sports-accessories'}" (click)="closeDropdown()">Sports</a>
         </div>
 
       </div>

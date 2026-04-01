@@ -1,59 +1,124 @@
-# Ecommerce
+#  Shopwise — Angular E-Commerce App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+A fully responsive e-commerce web application built with **Angular 21**, consuming a real REST API and featuring authentication, dynamic routing, cart management, and more.
 
-## Development server
+---
 
-To start a local development server, run:
+##  Getting Started
+
+### Prerequisites
+- Node.js (v18 or higher)
+- Angular CLI (`npm install -g @angular/cli`)
+
+### Installation & Run
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/shopwise.git
+
+# 2. Navigate to project folder
+cd shopwise
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Then open your browser at **http://localhost:4200**
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+##  Features
 
-```bash
-ng generate component component-name
+### 🛒 Cart — Open to Everyone
+Any visitor can browse products and add them to the cart — no login required. The cart also allows adding the same product multiple times to increase quantity. However, **proceeding to checkout requires a registered and logged-in account**. This ensures a smooth browsing experience while keeping the purchase flow secure.
+
+---
+
+###  Protected Pages & Access Control
+
+Certain pages in Shopwise are only accessible to logged-in users. If a visitor tries to access any of the following pages without being authenticated, they will be automatically redirected to the Login page:
+
+- **Wishlist** — Users must be logged in to view or remove their saved products
+- **Sale** — Exclusive deals are only visible to registered members
+- **Checkout** — Placing an order requires a verified account
+
+This is enforced using an **Angular Route Guard (`authGuard`)** that checks the user's session before granting access to any protected route.
+
+---
+
+###  Authentication
+- Register a new account with form validation
+- Login with email & password
+- Logout from any page
+- Duplicate email detection on registration
+
+### 📄 Pages
+| Page | Route | Protected |
+|------|-------|-----------|
+| Home / Products | `/products` | ❌ |
+| Product Details | `/product/:id` | ❌ |
+| Cart | `/cart` | ❌ |
+| Wishlist | `/wishlist` | ✅ Login required |
+| Sale | `/sale` | ✅ Login required |
+| Checkout | `/checkout` | ✅ Login required |
+| Login | `/login` | ❌ |
+| Register | `/register` | ❌ |
+
+---
+
+## API
+
+This project uses **[DummyJSON](https://dummyjson.com)** as the external REST API.
+
+| Endpoint | Description |
+|----------|-------------|
+| `GET /products?limit=100` | Fetch all products |
+| `GET /products/:id` | Fetch single product by ID |
+
+---
+
+##  Project Structure
+
+```
+src/
+├── app/
+│   ├── guards/
+│   │   └── auth-guard.ts        # Protects authenticated routes
+│   ├── pages/
+│   │   ├── home/                # Product listing + search + filter
+│   │   ├── product-details/     # Dynamic route /product/:id
+│   │   ├── cart/                # Cart management
+│   │   ├── wishlist/            # Saved products
+│   │   ├── checkout/            # Order summary (protected)
+│   │   ├── sale/                # Sale products (protected)
+│   │   ├── login/               # Login form
+│   │   └── register/            # Register form
+│   ├── services/
+│   │   ├── auth.service.ts      # Register / Login / Logout
+│   │   ├── product.service.ts   # API calls via HttpClient
+│   │   ├── cart.service.ts      # Cart & Wishlist state
+│   │   └── search.service.ts    # Shared search state
+│   ├── app.routes.ts            # All application routes
+│   └── app.html / app.css       # Root layout & navbar
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+##  Built With
 
-## Building
+- [Angular 21](https://angular.dev)
+- [Bootstrap 5.3](https://getbootstrap.com)
+- [Font Awesome 6](https://fontawesome.com)
+- [DummyJSON API](https://dummyjson.com)
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+##  Responsive Design
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The application is fully responsive and tested on:
+- Desktop (1200px+)
+- Tablet (768px)
+- Mobile (480px and below)

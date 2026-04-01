@@ -1,0 +1,194 @@
+<div class="container mt-4">
+
+  <!-- Order Placed Success -->
+  <div *ngIf="orderPlaced" class="text-center py-5">
+    <div style="width:70px;height:70px;background:#22c55e;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
+      <i class="fa-solid fa-check" style="color:white;font-size:28px;"></i>
+    </div>
+    <h4 class="fw-bold">Order Placed Successfully!</h4>
+    <p class="text-muted">Thank you for your order. Redirecting to home...</p>
+  </div>
+
+  <div *ngIf="!orderPlaced">
+
+    <!-- Steps -->
+    <div class="d-flex align-items-center gap-2 mb-4">
+      <div class="d-flex align-items-center gap-2">
+        <div style="width:28px;height:28px;border-radius:50%;background:#22c55e;display:flex;align-items:center;justify-content:center;">
+          <i class="fa-solid fa-check" style="color:white;font-size:12px;"></i>
+        </div>
+        <span style="font-size:13px;font-weight:500;">Cart</span>
+      </div>
+      <div style="flex:1;height:1px;background:#eee;"></div>
+      <div class="d-flex align-items-center gap-2">
+        <div style="width:28px;height:28px;border-radius:50%;background:#111;display:flex;align-items:center;justify-content:center;">
+          <span style="color:white;font-size:12px;">2</span>
+        </div>
+        <span style="font-size:13px;font-weight:500;">Checkout</span>
+      </div>
+      <div style="flex:1;height:1px;background:#eee;"></div>
+      <div class="d-flex align-items-center gap-2">
+        <div style="width:28px;height:28px;border-radius:50%;border:1.5px solid #eee;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:12px;color:#999;">3</span>
+        </div>
+        <span style="font-size:13px;color:#999;">Confirmation</span>
+      </div>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Left -->
+      <div class="col-md-8">
+
+        <!-- Shipping -->
+        <div class="border rounded-3 p-4 mb-3">
+          <h6 class="fw-bold mb-3">Shipping Address</h6>
+
+          <div class="row g-2">
+            <div class="col-6">
+              <label class="small text-muted">First Name</label>
+              <input class="form-control" [(ngModel)]="firstName" placeholder="John">
+              <div *ngIf="submitted && !firstName" class="text-danger small">⚠ Required</div>
+            </div>
+            <div class="col-6">
+              <label class="small text-muted">Last Name</label>
+              <input class="form-control" [(ngModel)]="lastName" placeholder="Doe">
+              <div *ngIf="submitted && !lastName" class="text-danger small">⚠ Required</div>
+            </div>
+            <div class="col-6">
+              <label class="small text-muted">Email</label>
+              <input type="email" class="form-control" [(ngModel)]="email" placeholder="john@example.com">
+              <div *ngIf="submitted && !email" class="text-danger small">⚠ Required</div>
+            </div>
+            <div class="col-6">
+              <label class="small text-muted">Phone</label>
+              <input class="form-control" [(ngModel)]="phone" placeholder="+20 1xx xxx xxxx">
+            </div>
+            <div class="col-12">
+              <label class="small text-muted">Address</label>
+              <input class="form-control" [(ngModel)]="address" placeholder="123 Main Street">
+              <div *ngIf="submitted && !address" class="text-danger small">⚠ Required</div>
+            </div>
+            <div class="col-6">
+              <label class="small text-muted">City</label>
+              <input class="form-control" [(ngModel)]="city" placeholder="Cairo">
+              <div *ngIf="submitted && !city" class="text-danger small">⚠ Required</div>
+            </div>
+            <div class="col-6">
+              <label class="small text-muted">Postal Code</label>
+              <input class="form-control" [(ngModel)]="postal" placeholder="11511">
+            </div>
+            <div class="col-12">
+              <label class="small text-muted">Country</label>
+              <select class="form-select" [(ngModel)]="country">
+                <option>Egypt</option>
+                <option>UAE</option>
+                <option>Saudi Arabia</option>
+                <option>Kuwait</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment -->
+        <div class="border rounded-3 p-4">
+          <h6 class="fw-bold mb-3">Payment Method</h6>
+
+          <div class="d-flex gap-2 mb-3">
+            <button class="btn w-100 py-2"
+                    [style.background]="paymentMethod === 'card' ? '#111' : 'white'"
+                    [style.color]="paymentMethod === 'card' ? 'white' : '#333'"
+                    style="border:1px solid #ddd; font-size:13px;"
+                    (click)="paymentMethod = 'card'">
+              Credit Card
+            </button>
+            <button class="btn w-100 py-2"
+                    [style.background]="paymentMethod === 'paypal' ? '#111' : 'white'"
+                    [style.color]="paymentMethod === 'paypal' ? 'white' : '#333'"
+                    style="border:1px solid #ddd; font-size:13px;"
+                    (click)="paymentMethod = 'paypal'">
+              PayPal
+            </button>
+            <button class="btn w-100 py-2"
+                    [style.background]="paymentMethod === 'cash' ? '#111' : 'white'"
+                    [style.color]="paymentMethod === 'cash' ? 'white' : '#333'"
+                    style="border:1px solid #ddd; font-size:13px;"
+                    (click)="paymentMethod = 'cash'">
+              Cash on Delivery
+            </button>
+          </div>
+
+          <div *ngIf="paymentMethod === 'card'" class="row g-2">
+            <div class="col-12">
+              <label class="small text-muted">Card Number</label>
+              <input class="form-control" [(ngModel)]="cardNumber" placeholder="1234  5678  9012  3456">
+              <div *ngIf="submitted && paymentMethod === 'card' && !cardNumber" class="text-danger small">⚠ Required</div>
+            </div>
+            <div class="col-6">
+              <label class="small text-muted">Expiry Date</label>
+              <input class="form-control" [(ngModel)]="expiry" placeholder="MM / YY">
+              <div *ngIf="submitted && paymentMethod === 'card' && !expiry" class="text-danger small">⚠ Required</div>
+            </div>
+            <div class="col-6">
+              <label class="small text-muted">CVV</label>
+              <input class="form-control" [(ngModel)]="cvv" placeholder="•••">
+              <div *ngIf="submitted && paymentMethod === 'card' && !cvv" class="text-danger small">⚠ Required</div>
+            </div>
+            <div class="col-12">
+              <label class="small text-muted">Name on Card</label>
+              <input class="form-control" [(ngModel)]="cardName" placeholder="John Doe">
+              <div *ngIf="submitted && paymentMethod === 'card' && !cardName" class="text-danger small">⚠ Required</div>
+            </div>
+          </div>
+
+          <div *ngIf="paymentMethod === 'paypal'" class="text-center py-3 text-muted" style="font-size:13px;">
+            You will be redirected to PayPal to complete payment.
+          </div>
+
+          <div *ngIf="paymentMethod === 'cash'" class="text-center py-3 text-muted" style="font-size:13px;">
+            Pay when your order arrives at your door.
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Right -->
+      <div class="col-md-4">
+        <div class="p-4 rounded-3" style="background:#f8f8f8;">
+          <h6 class="fw-bold mb-3">Order Summary ({{ cartItems.length }} items)</h6>
+
+          <div style="max-height:200px; overflow-y:auto; margin-bottom:12px;">
+            <div *ngFor="let item of cartItems" class="d-flex justify-content-between mb-2" style="font-size:13px;">
+              <span class="text-muted">{{ item.title | slice:0:25 }}... × {{ item.quantity || 1 }}</span>
+              <span>${{ item.price }}</span>
+            </div>
+          </div>
+
+          <hr>
+          <div class="d-flex justify-content-between text-muted mb-1" style="font-size:13px;">
+            <span>Subtotal</span><span>${{ getTotal() }}</span>
+          </div>
+          <div class="d-flex justify-content-between text-muted mb-1" style="font-size:13px;">
+            <span>Shipping</span><span class="text-success">Free</span>
+          </div>
+          <div class="d-flex justify-content-between text-muted mb-3" style="font-size:13px;">
+            <span>Tax</span><span>$0.00</span>
+          </div>
+          <div class="d-flex justify-content-between fw-bold mb-4">
+            <span>Total</span><span>${{ getTotal() }}</span>
+          </div>
+
+          <button class="btn btn-dark w-100 py-2" (click)="placeOrder()">
+            Place Order →
+          </button>
+
+          <div class="text-center mt-2" style="font-size:11px; color:#999;">
+            <i class="fa-solid fa-lock me-1"></i> Secure SSL checkout
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

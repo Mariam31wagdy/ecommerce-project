@@ -1,0 +1,67 @@
+<div class="container mt-5 d-flex justify-content-center">
+  <div style="width:360px; background:#1a1a1a; border-radius:16px; overflow:hidden;">
+
+    <div style="background:#111; padding:1.5rem; display:flex; align-items:center; gap:12px;">
+      <div style="width:40px; height:40px; background:#e53935; border-radius:10px; display:flex; align-items:center; justify-content:center;">
+        <i class="fa-solid fa-right-to-bracket" style="color:white; font-size:16px;"></i>
+      </div>
+      <div>
+        <div style="font-size:16px; font-weight:800; color:white;">
+          Welcome Back <span style="color:#e53935;">Shopwise</span>
+        </div>
+        <div style="font-size:12px; color:#888;">Login to your account</div>
+      </div>
+    </div>
+
+    <div style="padding:1.8rem;">
+
+      <label class="text-light small">Email</label>
+      <input type="email"
+             class="form-control mb-1"
+             style="background:#2a2a2a; border:1px solid #333; color:white;"
+             placeholder="you@example.com"
+             [(ngModel)]="email">
+      <div *ngIf="email && !email.includes('@')" class="text-danger small mb-2">
+        ⚠ Invalid email address
+      </div>
+      <div *ngIf="submitted && !email" class="text-danger small mb-2">
+        ⚠ Email is required
+      </div>
+
+      <label class="text-light small mt-2">Password</label>
+      <div class="position-relative mb-1">
+        <input [type]="showPassword ? 'text' : 'password'"
+               class="form-control"
+               style="background:#2a2a2a; border:1px solid #333; color:white; padding-right:40px;"
+               placeholder="••••••••"
+               [(ngModel)]="password">
+        <i class="fa-solid position-absolute"
+           [class.fa-eye]="!showPassword"
+           [class.fa-eye-slash]="showPassword"
+           style="right:12px; top:50%; transform:translateY(-50%); color:#888; cursor:pointer;"
+           (click)="showPassword = !showPassword"></i>
+      </div>
+      <div *ngIf="submitted && !password" class="text-danger small mb-2">
+        ⚠ Password is required
+      </div>
+
+      <div class="form-check mb-3 mt-2">
+        <input type="checkbox" [(ngModel)]="remember" class="form-check-input">
+        <label class="form-check-label text-light">Remember me</label>
+      </div>
+
+      <button class="btn w-100 py-2 fw-bold"
+              style="background:#e53935; color:white; border:none;"
+              (click)="login()">
+        Login →
+      </button>
+
+      <p class="text-danger text-center mt-2" style="font-size:13px;">{{ message }}</p>
+
+      <p class="text-center mt-3" style="font-size:13px; color:#888;">
+        Don't have account?
+        <a routerLink="/register" style="color:#e53935; font-weight:700; text-decoration:none;">Register</a>
+      </p>
+    </div>
+  </div>
+</div>

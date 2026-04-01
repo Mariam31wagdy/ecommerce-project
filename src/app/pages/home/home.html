@@ -1,0 +1,53 @@
+<h3 class="text-center mb-4 fw-bold">Exclusive Products</h3>
+
+<div *ngIf="loading" class="text-center py-5">
+  <div class="spinner-border text-danger" role="status"></div>
+  <p class="mt-2 text-muted">Loading products...</p>
+</div>
+
+<div *ngIf="error" class="text-center py-5">
+  <p class="text-danger fw-bold">{{ error }}</p>
+</div>
+
+<div class="row" *ngIf="!loading && !error">
+  <div class="col-md-3 mb-4" *ngFor="let p of productList">
+    <div class="card product-card h-100 text-center p-3">
+
+      <span *ngIf="p.price < 50" class="badge bg-danger position-absolute m-2">
+        SALE
+      </span>
+
+      <button class="btn position-absolute top-0 end-0 m-2 p-1"
+              style="background:none; border:none; z-index:1;"
+              (click)="toggleWishlist(p)">
+        <i class="fa-solid fa-heart" style="color:#e53935; font-size:18px;" *ngIf="isInWishlist(p.id)"></i>
+        <i class="fa-regular fa-heart" style="color:#ccc; font-size:18px;" *ngIf="!isInWishlist(p.id)"></i>
+      </button>
+
+      <img [src]="p.image" class="card-img-top product-img">
+
+      <h6 class="mt-3">{{ p.title }}</h6>
+
+      <div class="d-flex justify-content-center align-items-center gap-1 mb-1">
+        <span *ngFor="let star of getStars(p.rating?.rate)">
+          <i class="fa-solid fa-star" style="color:#f59e0b; font-size:13px;" *ngIf="star === 'full'"></i>
+          <i class="fa-solid fa-star-half-stroke" style="color:#f59e0b; font-size:13px;" *ngIf="star === 'half'"></i>
+          <i class="fa-regular fa-star" style="color:#f59e0b; font-size:13px;" *ngIf="star === 'empty'"></i>
+        </span>
+        <span class="text-muted" style="font-size:11px;">({{ p.rating?.count }})</span>
+      </div>
+
+      <p class="text-danger fw-bold">${{ p.price }}</p>
+
+      <div class="d-flex gap-2 mt-2">
+        <button class="btn btn-add w-50" (click)="addToCart(p)">
+          <span>Add to Cart</span>
+        </button>
+        <a [routerLink]="['/product', p.id]" class="btn btn-view w-50">
+          <span>View</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>

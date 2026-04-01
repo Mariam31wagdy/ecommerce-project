@@ -1,10 +1,10 @@
-# 🛍️ Shopwise — Angular E-Commerce App
+#  Shopwise — Angular E-Commerce App
 
 A fully responsive e-commerce web application built with **Angular 21**, consuming a real REST API and featuring authentication, dynamic routing, cart management, and more.
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - Node.js (v18 or higher)
@@ -30,14 +30,14 @@ Then open your browser at **http://localhost:4200**
 
 ---
 
-## ✨ Features
+##  Features
 
 ### 🛒 Cart — Open to Everyone
 Any visitor can browse products and add them to the cart — no login required. The cart also allows adding the same product multiple times to increase quantity. However, **proceeding to checkout requires a registered and logged-in account**. This ensures a smooth browsing experience while keeping the purchase flow secure.
 
 ---
 
-### 🔒 Protected Pages & Access Control
+###  Protected Pages & Access Control
 
 Certain pages in Shopwise are only accessible to logged-in users. If a visitor tries to access any of the following pages without being authenticated, they will be automatically redirected to the Login page:
 
@@ -49,7 +49,7 @@ This is enforced using an **Angular Route Guard (`authGuard`)** that checks the 
 
 ---
 
-### 🔐 Authentication
+###  Authentication
 - Register a new account with form validation
 - Login with email & password
 - Logout from any page
@@ -69,7 +69,7 @@ This is enforced using an **Angular Route Guard (`authGuard`)** that checks the 
 
 ---
 
-## 🌐 API
+## API
 
 This project uses **[DummyJSON](https://dummyjson.com)** as the external REST API.
 
@@ -80,7 +80,7 @@ This project uses **[DummyJSON](https://dummyjson.com)** as the external REST AP
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 src/
@@ -107,7 +107,7 @@ src/
 
 ---
 
-## 🛠️ Built With
+##  Built With
 
 - [Angular 21](https://angular.dev)
 - [Bootstrap 5.3](https://getbootstrap.com)
@@ -116,7 +116,7 @@ src/
 
 ---
 
-## 📱 Responsive Design
+##  Responsive Design
 
 The application is fully responsive and tested on:
 - Desktop (1200px+)

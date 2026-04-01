@@ -7,93 +7,77 @@
   <nav class="bg-white border-bottom shadow-sm">
     <div class="container py-2">
 
-      <!-- ===== Single Unified Row (Mobile + Desktop) ===== -->
-      <div class="d-flex align-items-center gap-2 gap-md-4">
-
-        <!-- Logo -->
+      <!-- ===== Desktop (lg+) ===== -->
+      <div class="d-none d-lg-flex align-items-center gap-4">
         <a routerLink="/products" class="logo-text">
           <span class="shop">SHOP</span><span class="wise">WISE</span>
         </a>
 
-        <!-- Center: Search + Categories -->
-        <div class="d-flex flex-column flex-grow-1 gap-1 justify-content-center" style="min-width:0;">
-
-          <!-- Search -->
-          <div class="d-flex align-items-center border border-dark overflow-hidden align-self-center w-100 w-md-75" style="height:30px;">
-            <i class="fa-solid fa-magnifying-glass ps-2" style="font-size:11px; color:#999; flex-shrink:0;"></i>
+        <div class="d-flex flex-column flex-grow-1 gap-1 justify-content-center">
+          <div class="d-flex align-items-center border border-dark overflow-hidden align-self-center w-75" style="height:30px;">
+            <i class="fa-solid fa-magnifying-glass ps-2" style="font-size:11px; color:#999;"></i>
             <input type="text" class="form-control border-0 rounded-0 ps-2"
-                   style="font-size:12px; height:30px; min-width:0;"
+                   style="font-size:12px; height:30px;"
                    placeholder="Search for items..."
                    [(ngModel)]="searchText"
                    (input)="onSearch()">
           </div>
 
-          <!-- Categories -->
-          <div class="categories-bar d-flex justify-content-start justify-content-md-center flex-nowrap overflow-auto gap-1" style="-webkit-overflow-scrolling:touch; scrollbar-width:none;">
-
+          <!-- Desktop Categories -->
+          <div class="categories-bar d-flex justify-content-center flex-wrap gap-1">
             <a routerLink="/products" [queryParams]="{}" class="cat-link active" (click)="closeDropdown()">New In</a>
 
-            <!-- Clothing -->
             <div class="custom-dropdown" (mouseleave)="closeDropdown()">
-              <a class="cat-link" (click)="toggleDropdown('clothing')">
-                Clothing <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i>
-              </a>
+              <a class="cat-link" (click)="toggleDropdown('clothing')">Clothing <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a>
               <div class="custom-dropdown-menu" [class.show]="activeDropdown === 'clothing'">
                 <a routerLink="/products" [queryParams]="{category: 'mens-shirts'}" (click)="closeDropdown()">Mens Shirts</a>
                 <a routerLink="/products" [queryParams]="{category: 'mens-watches'}" (click)="closeDropdown()">Mens & Womens Watches</a>
                 <a routerLink="/products" [queryParams]="{category: 'mens-shoes'}" (click)="closeDropdown()">Mens & Womens Shoes</a>
                 <hr>
+                <a routerLink="/products" [queryParams]="{category: 'womens-dresses'}" (click)="closeDropdown()">Womens Dresses</a>
+                <a routerLink="/products" [queryParams]="{category: 'tops'}" (click)="closeDropdown()">Tops</a>
               </div>
             </div>
 
-            <!-- Electronics -->
             <div class="custom-dropdown" (mouseleave)="closeDropdown()">
-              <a class="cat-link" (click)="toggleDropdown('electronics')">
-                Electronics <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i>
-              </a>
+              <a class="cat-link" (click)="toggleDropdown('electronics')">Electronics <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a>
               <div class="custom-dropdown-menu" [class.show]="activeDropdown === 'electronics'">
+                <a routerLink="/products" [queryParams]="{category: 'smartphones'}" (click)="closeDropdown()">Smartphones</a>
                 <a routerLink="/products" [queryParams]="{category: 'laptops'}" (click)="closeDropdown()">Laptops</a>
+                <a routerLink="/products" [queryParams]="{category: 'tablets'}" (click)="closeDropdown()">Tablets</a>
                 <a routerLink="/products" [queryParams]="{category: 'mobile-accessories'}" (click)="closeDropdown()">Mobile Accessories</a>
               </div>
             </div>
 
-            <!-- Cosmetics -->
             <div class="custom-dropdown" (mouseleave)="closeDropdown()">
-              <a class="cat-link" (click)="toggleDropdown('accessories')">
-                Cosmetics <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i>
-              </a>
+              <a class="cat-link" (click)="toggleDropdown('accessories')">Cosmetics <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a>
               <div class="custom-dropdown-menu" [class.show]="activeDropdown === 'accessories'">
                 <a routerLink="/products" [queryParams]="{category: 'fragrances'}" (click)="closeDropdown()">Fragrances</a>
                 <a routerLink="/products" [queryParams]="{category: 'beauty'}" (click)="closeDropdown()">Beauty</a>
+                <a routerLink="/products" [queryParams]="{category: 'skin-care'}" (click)="closeDropdown()">Skin Care</a>
               </div>
             </div>
 
-            <!-- More -->
             <div class="custom-dropdown" (mouseleave)="closeDropdown()">
-              <a class="cat-link" (click)="toggleDropdown('more')">
-                More <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i>
-              </a>
+              <a class="cat-link" (click)="toggleDropdown('more')">More <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a>
               <div class="custom-dropdown-menu" [class.show]="activeDropdown === 'more'">
                 <a routerLink="/products" [queryParams]="{category: 'groceries'}" (click)="closeDropdown()">Groceries</a>
                 <a routerLink="/products" [queryParams]="{category: 'home-decoration'}" (click)="closeDropdown()">Home Decoration</a>
                 <a routerLink="/products" [queryParams]="{category: 'furniture'}" (click)="closeDropdown()">Furniture</a>
                 <a routerLink="/products" [queryParams]="{category: 'kitchen-accessories'}" (click)="closeDropdown()">Kitchen Accessories</a>
+                <a routerLink="/products" [queryParams]="{category: 'sports-accessories'}" (click)="closeDropdown()">Sports</a>
               </div>
             </div>
 
             <a routerLink="/sale" class="cat-link sale" (click)="closeDropdown()">🔥 Sale</a>
-
           </div>
         </div>
 
-        <!-- Right Icons -->
-        <div class="d-flex align-items-center gap-2 gap-md-4" style="flex-shrink:0;">
-
-          <!-- Account Dropdown -->
+        <div class="d-flex align-items-center gap-4">
           <div class="custom-dropdown" (mouseleave)="closeDropdown()">
             <div class="d-flex flex-column align-items-center" style="cursor:pointer;" (click)="toggleDropdown('account')">
               <i class="fa-regular fa-user fs-5"></i>
-              <span class="d-none d-md-block" style="font-size:10px; color:#777;">Account</span>
+              <span style="font-size:10px; color:#777;">Account</span>
             </div>
             <div class="custom-dropdown-menu" style="left:auto; right:0;" [class.show]="activeDropdown === 'account'">
               <ng-container *ngIf="!authService.isLoggedIn()">
@@ -106,25 +90,109 @@
             </div>
           </div>
 
-          <!-- Wishlist -->
           <a routerLink="/wishlist" class="d-flex flex-column align-items-center text-decoration-none text-dark position-relative">
             <i class="fa-regular fa-heart fs-5"></i>
-            <span class="d-none d-md-block" style="font-size:10px; color:#777;">Wishlist</span>
-            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" style="font-size:9px;">
-              {{ cartService.getWishlistItems().length }}
-            </span>
+            <span style="font-size:10px; color:#777;">Wishlist</span>
+            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" style="font-size:9px;">{{ cartService.getWishlistItems().length }}</span>
           </a>
 
-          <!-- Cart -->
           <a routerLink="/cart" class="d-flex flex-column align-items-center text-decoration-none text-dark position-relative">
             <i class="fa-solid fa-cart-shopping fs-5"></i>
-            <span class="d-none d-md-block" style="font-size:10px; color:#777;">Cart</span>
-            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" style="font-size:9px;">
-              {{ cartService.getCartItems().length }}
-            </span>
+            <span style="font-size:10px; color:#777;">Cart</span>
+            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" style="font-size:9px;">{{ cartService.getCartItems().length }}</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ===== Mobile (below lg) ===== -->
+      <div class="d-flex d-lg-none align-items-center" style="gap:8px;">
+
+        <a routerLink="/products" class="logo-text" style="font-size:18px;">
+          <span class="shop">SHOP</span><span class="wise">WISE</span>
+        </a>
+
+        <div class="d-flex align-items-center border border-dark" style="min-width:0; flex:1 1 0; height:30px; overflow:hidden;">
+          <i class="fa-solid fa-magnifying-glass ps-2" style="font-size:11px; color:#999; flex-shrink:0;"></i>
+          <input type="text" class="form-control border-0 rounded-0 ps-2"
+                 style="font-size:12px; height:30px; min-width:0;"
+                 placeholder="Search..."
+                 [(ngModel)]="searchText"
+                 (input)="onSearch()">
+        </div>
+
+        <div class="d-flex align-items-center gap-2" style="flex-shrink:0;">
+
+          <div class="custom-dropdown" (mouseleave)="closeDropdown()">
+            <a class="text-dark" style="text-decoration:none; cursor:pointer;" (click)="toggleDropdown('account-mobile')">
+              <i class="fa-regular fa-user" style="font-size:20px;"></i>
+            </a>
+            <div class="custom-dropdown-menu" style="left:auto; right:0;" [class.show]="activeDropdown === 'account-mobile'">
+              <ng-container *ngIf="!authService.isLoggedIn()">
+                <a routerLink="/login" (click)="closeDropdown()">Login</a>
+                <a routerLink="/register" (click)="closeDropdown()">Register</a>
+              </ng-container>
+              <ng-container *ngIf="authService.isLoggedIn()">
+                <a style="color:#e53935; cursor:pointer;" (click)="logout()">Logout</a>
+              </ng-container>
+            </div>
+          </div>
+
+          <a routerLink="/wishlist" class="position-relative text-dark" style="text-decoration:none;">
+            <i class="fa-regular fa-heart" style="font-size:20px;"></i>
+            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" style="font-size:9px;">{{ cartService.getWishlistItems().length }}</span>
+          </a>
+
+          <a routerLink="/cart" class="position-relative text-dark" style="text-decoration:none;">
+            <i class="fa-solid fa-cart-shopping" style="font-size:20px;"></i>
+            <span class="badge bg-danger position-absolute top-0 start-100 translate-middle" style="font-size:9px;">{{ cartService.getCartItems().length }}</span>
           </a>
 
         </div>
+      </div>
+
+      <!-- ===== Mobile Categories — Wrapper بدون overflow ===== -->
+      <div class="mobile-cat-wrapper d-block d-lg-none mt-2">
+
+        <!-- الـ scroll row -->
+        <div class="mobile-cat-scroll">
+          <a routerLink="/products" [queryParams]="{}" class="cat-link active" (click)="closeDropdown()">New In</a>
+          <a class="cat-link" (click)="toggleDropdown('m-clothing')">Clothing <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a>
+          <a class="cat-link" (click)="toggleDropdown('m-electronics')">Electronics <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a>
+          <a class="cat-link" (click)="toggleDropdown('m-cosmetics')">Cosmetics <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a>
+          <a class="cat-link" (click)="toggleDropdown('m-more')">More <i class="fa-solid fa-chevron-down" style="font-size:9px;"></i></a>
+          <a routerLink="/sale" class="cat-link sale" (click)="closeDropdown()">🔥 Sale</a>
+        </div>
+
+        <!-- Dropdown panels — خارج الـ scroll لكن جوا الـ wrapper -->
+        <div class="mobile-dropdown-panel" *ngIf="activeDropdown === 'm-clothing'">
+          <a routerLink="/products" [queryParams]="{category: 'mens-shirts'}" (click)="closeDropdown()">Mens Shirts</a>
+          <a routerLink="/products" [queryParams]="{category: 'mens-watches'}" (click)="closeDropdown()">Mens & Womens Watches</a>
+          <a routerLink="/products" [queryParams]="{category: 'mens-shoes'}" (click)="closeDropdown()">Mens & Womens Shoes</a>
+          <a routerLink="/products" [queryParams]="{category: 'womens-dresses'}" (click)="closeDropdown()">Womens Dresses</a>
+          <a routerLink="/products" [queryParams]="{category: 'tops'}" (click)="closeDropdown()">Tops</a>
+        </div>
+
+        <div class="mobile-dropdown-panel" *ngIf="activeDropdown === 'm-electronics'">
+          <a routerLink="/products" [queryParams]="{category: 'smartphones'}" (click)="closeDropdown()">Smartphones</a>
+          <a routerLink="/products" [queryParams]="{category: 'laptops'}" (click)="closeDropdown()">Laptops</a>
+          <a routerLink="/products" [queryParams]="{category: 'tablets'}" (click)="closeDropdown()">Tablets</a>
+          <a routerLink="/products" [queryParams]="{category: 'mobile-accessories'}" (click)="closeDropdown()">Mobile Accessories</a>
+        </div>
+
+        <div class="mobile-dropdown-panel" *ngIf="activeDropdown === 'm-cosmetics'">
+          <a routerLink="/products" [queryParams]="{category: 'fragrances'}" (click)="closeDropdown()">Fragrances</a>
+          <a routerLink="/products" [queryParams]="{category: 'beauty'}" (click)="closeDropdown()">Beauty</a>
+          <a routerLink="/products" [queryParams]="{category: 'skin-care'}" (click)="closeDropdown()">Skin Care</a>
+        </div>
+
+        <div class="mobile-dropdown-panel" *ngIf="activeDropdown === 'm-more'">
+          <a routerLink="/products" [queryParams]="{category: 'groceries'}" (click)="closeDropdown()">Groceries</a>
+          <a routerLink="/products" [queryParams]="{category: 'home-decoration'}" (click)="closeDropdown()">Home Decoration</a>
+          <a routerLink="/products" [queryParams]="{category: 'furniture'}" (click)="closeDropdown()">Furniture</a>
+          <a routerLink="/products" [queryParams]="{category: 'kitchen-accessories'}" (click)="closeDropdown()">Kitchen Accessories</a>
+          <a routerLink="/products" [queryParams]="{category: 'sports-accessories'}" (click)="closeDropdown()">Sports</a>
+        </div>
+
       </div>
 
     </div>
